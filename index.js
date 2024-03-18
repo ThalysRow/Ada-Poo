@@ -94,7 +94,7 @@ class ContaPoupanca extends Conta {
     }
 
     calcularJuros() {
-        const juros = super.saldo * (this.taxaJuros / 100)
+        const juros = super.saldo * (this.jurosAtual / 100)
         console.log(`Juros da Conta Poupança é de: R$ ${juros.toFixed(2)}`)
     }
 
@@ -102,8 +102,12 @@ class ContaPoupanca extends Conta {
         return this.#limiteSaques
     }
 
-    set gerenciarLimiteSaques(novoLimite) {
-        this.limiteSaqueAtual = novoLimite
+    set novoLimiteSaque(valor) {
+        return this.#limiteSaques = valor
+    }
+
+    gerenciarLimiteSaques(novoLimite) {
+        this.novoLimiteSaque = novoLimite
         console.log(`O novo limite de saques é: ${novoLimite}`)
     }
 
