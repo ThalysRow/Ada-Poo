@@ -52,7 +52,12 @@ class ContaCorrente extends Conta {
         super(numeroConta, saldoInicial, nomeUsuario, profissaoUsuario)
         this.#limiteChequeEspecial = limiteChequeEspecial
         this.#taxaManutencao = taxaManutencao
-        ContaCorrente.contasCorrente.push(numeroConta)
+        ContaCorrente.contasCorrente.push({
+            numeroConta,
+            nomeUsuario,
+            profissaoUsuario
+
+        })
     }
 
     get limiteAtual() {
@@ -74,7 +79,7 @@ class ContaCorrente extends Conta {
 
     static listarTodasContasCorrente() {
         console.log("Contas corrente criadas:")
-        ContaCorrente.contasCorrente.forEach(numeroConta => console.log(numeroConta))
+        ContaCorrente.contasCorrente.forEach(conta => console.log(conta))
     }
 }
 
