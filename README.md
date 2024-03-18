@@ -19,6 +19,7 @@
      - `checarExtrato()`: exibe o extrato da conta, incluindo número de conta, saldo atual, nome do usuário e profissão do usuário.
      - `solicitarEmprestimo(valor)`: solicita um empréstimo na conta e exibe uma mensagem indicando o valor solicitado.
      - `static imprimirInstrucoes()`: exibe instruções gerais para o uso das contas.
+
 2. **Classe ContaCorrente (Herança de Conta):**
    - Além dos atributos e métodos da classe `Conta`, a classe `ContaCorrente` deve conter:
      - Atributos privados adicionais: `limiteChequeEspecial`, `taxaManutencao`.
@@ -27,6 +28,7 @@
        - `gerenciarLimiteChequeEspecial(novoLimite)`: gerencia o limite do cheque especial e exibe uma mensagem indicando a alteração.
        - `calcularTaxaManutencao()`: calcula a taxa de manutenção da conta corrente e exibe o valor calculado.
      - `static listarTodasContasCorrente()`: lista todas as contas corrente criadas.
+
 3. **Classe ContaPoupanca (Herança de Conta):**
    - Além dos atributos e métodos da classe `Conta`, a classe `ContaPoupanca` deve conter:
      - Atributos privados adicionais: `taxaJuros`, `limiteSaques`.
