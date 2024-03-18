@@ -1,18 +1,18 @@
 class Conta {
-    #numeroConta;
-    #saldo;
-    nomeUsuario;
-    profissaoUsuario;
+    #numeroConta
+    #saldo
+    nomeUsuario
+    profissaoUsuario
 
     constructor(numeroConta, saldoInicial, nomeUsuario, profissaoUsuario) {
-        this.#numeroConta = numeroConta;
-        this.#saldo = saldoInicial;
-        this.nomeUsuario = nomeUsuario;
-        this.profissaoUsuario = profissaoUsuario;
+        this.#numeroConta = numeroConta
+        this.#saldo = saldoInicial
+        this.nomeUsuario = nomeUsuario
+        this.profissaoUsuario = profissaoUsuario
     }
 
     criarConta() {
-        console.log('Conta criada com sucesso!');
+        console.log('Conta criada com sucesso!')
     }
 
     checarExtrato() {
@@ -22,11 +22,11 @@ class Conta {
         Saldo atual: R$ ${this.#saldo.toFixed(2)}.
         Nome do usuário: ${this.nomeUsuario}.
         Profissão: ${this.profissaoUsuario}.
-        `);
+        `)
     }
 
     solicitarEmprestimo(valor) {
-        console.log(`Foi solicitado um empréstimo de: R$ ${valor.toFixed(2)}.`);
+        console.log(`Foi solicitado um empréstimo de: R$ ${valor.toFixed(2)}.`)
     }
 
     static imprimirInstrucoes() {
@@ -38,61 +38,77 @@ class Conta {
         `);
     }
 
-    getSaldo() {
-        return this.#saldo;
+    get saldo() {
+        return this.#saldo
     }
 }
 
 class ContaCorrente extends Conta {
-    #limiteChequeEspecial;
-    #taxaManutencao;
-    static contasCorrente = [];
+    #limiteChequeEspecial
+    #taxaManutencao
+    static contasCorrente = []
 
     constructor(numeroConta, saldoInicial, nomeUsuario, profissaoUsuario, limiteChequeEspecial, taxaManutencao) {
-        super(numeroConta, saldoInicial, nomeUsuario, profissaoUsuario);
-        this.#limiteChequeEspecial = limiteChequeEspecial;
-        this.#taxaManutencao = taxaManutencao;
-        ContaCorrente.contasCorrente.push(numeroConta);
+        super(numeroConta, saldoInicial, nomeUsuario, profissaoUsuario)
+        this.#limiteChequeEspecial = limiteChequeEspecial
+        this.#taxaManutencao = taxaManutencao
+        ContaCorrente.contasCorrente.push(numeroConta)
     }
 
-    gerenciarLimiteChequeEspecial(novoLimite) {
-        this.#limiteChequeEspecial = novoLimite;
-        console.log(`O novo limite do Cheque Especial é: R$ ${novoLimite.toFixed(2)}`);
+    get limiteAtual() {
+        return this.#limiteChequeEspecial
+    }
+
+    set gerenciarLimiteChequeEspecial(novoLimite) {
+        this.limiteAtual = novoLimite
+        console.log(`O novo limite do Cheque Especial é: R$ ${novoLimite.toFixed(2)}`)
+    }
+
+    get taxaManutencao() {
+        return this.#taxaManutencao
     }
 
     calcularTaxaManutencao() {
-        console.log(`A taxa de manutenção da conta corrente é de: R$ ${this.#taxaManutencao.toFixed(2)}.`);
+        console.log(`A taxa de manutenção da conta corrente é de: R$ ${this.taxaManutencao.toFixed(2)}.`)
     }
 
     static listarTodasContasCorrente() {
-        console.log("Contas corrente criadas:");
-        ContaCorrente.contasCorrente.forEach(numeroConta => console.log(numeroConta));
+        console.log("Contas corrente criadas:")
+        ContaCorrente.contasCorrente.forEach(numeroConta => console.log(numeroConta))
     }
 }
 
 class ContaPoupanca extends Conta {
-    #taxaJuros;
-    #limiteSaques;
-    static melhoresInvestimentos = ["Tesouro Direto", "Ações"];
+    #taxaJuros
+    #limiteSaques
+    static melhoresInvestimentos = ["Tesouro Direto", "Ações"]
 
     constructor(numeroConta, saldoInicial, nomeUsuario, profissaoUsuario, taxaJuros, limiteSaques) {
-        super(numeroConta, saldoInicial, nomeUsuario, profissaoUsuario);
-        this.#taxaJuros = taxaJuros;
-        this.#limiteSaques = limiteSaques;
+        super(numeroConta, saldoInicial, nomeUsuario, profissaoUsuario)
+        this.#taxaJuros = taxaJuros
+        this.#limiteSaques = limiteSaques
+    }
+
+    get jurosAtual() {
+        return this.#taxaJuros
     }
 
     calcularJuros() {
-        const juros = super.getSaldo() * (this.#taxaJuros / 100);
-        console.log(`Juros da Conta Poupança é de: R$ ${juros.toFixed(2)}`);
+        const juros = super.saldo * (this.taxaJuros / 100)
+        console.log(`Juros da Conta Poupança é de: R$ ${juros.toFixed(2)}`)
     }
 
-    gerenciarLimiteSaques(novoLimite) {
-        this.#limiteSaques = novoLimite;
-        console.log(`O novo limite de saques é: ${novoLimite}`);
+    get limiteSaqueAtual() {
+        return this.#limiteSaques
+    }
+
+    set gerenciarLimiteSaques(novoLimite) {
+        this.limiteSaqueAtual = novoLimite
+        console.log(`O novo limite de saques é: ${novoLimite}`)
     }
 
     static verificarMelhorInvestimento() {
-        console.log("Melhores investimentos para contas poupança:");
-        ContaPoupanca.melhoresInvestimentos.forEach(item => console.log(item));
+        console.log("Melhores investimentos para contas poupança:")
+        ContaPoupanca.melhoresInvestimentos.forEach(item => console.log(item))
     }
 }
